@@ -1,4 +1,76 @@
 ========================================================================
+PROGRAM FILE STRUCT
+========================================================================
+
+prithee-project/
+├── build.gradle.kts
+├── docs/
+├── README.txt
+├── sources.txt
+└── src/
+    ├── main/
+    │   └── java/
+    │       └── org/
+    │           └── example/
+    │               ├── Main.java
+    │               └── PritheeGame.java
+    └── test/
+        └── java/
+            └── org/
+                └── example/
+                    └── PritheeGameTest.java
+========================================================================
+PROGRAM PSEUDOCODE
+========================================================================
+START PROGRAM
+
+Initialize correctCount = 0
+Initialize incorrectCount = 0
+Load SONNET string and split into array of WORDS
+
+WHILE correctCount < 3 AND incorrectCount < 3 DO
+
+    Select random TARGET_INDEX from 0 to length of WORDS - 1
+    Extract TARGET_WORD from WORDS[TARGET_INDEX] and remove punctuation
+
+    FOR i FROM 0 TO TARGET_INDEX DO
+        IF i EQUALS TARGET_INDEX THEN
+            PRINT "___ "
+        ELSE
+            PRINT WORDS[i] + " "
+        END IF
+
+        IF WORDS[i] ends with line-break punctuation THEN
+            PRINT NEWLINE
+        END IF
+    END FOR
+
+    PRINT "Prithee! What is the missing word?"
+    READ USER_GUESS
+
+    Clean USER_GUESS (trim spaces)
+
+    IF USER_GUESS equals TARGET_WORD (ignoring case) THEN
+        INCREMENT correctCount
+        PRINT "Correct!"
+    ELSE
+        INCREMENT incorrectCount
+        PRINT "Error! The word was: " + TARGET_WORD
+    END IF
+
+    PRINT Current Score (correctCount, incorrectCount)
+
+END WHILE
+
+IF correctCount EQUALS 3 THEN
+    PRINT "Bravo! You saved the show!"
+ELSE
+    PRINT "Curtain falls! 3 errors made."
+END IF
+
+END PROGRAM
+
+========================================================================
 PRITHEE GAME - SHAKESPEAREAN LINE PROMPTER
 ========================================================================
 
@@ -25,5 +97,14 @@ Ensure Java (JDK 20 or newer recommended) is installed on your system.
    cd path/to/HW2
 
 2. Execute the Gradle run task with standard input enabled:
-        javac -d bin src/main/java/org.example/*.java
+        javac -d bin src/main/java/org/example/*.java
         java -cp bin org.example.Main
+
+========================================================================
+HOW TO RUN THE TEST CASES
+========================================================================
+
+.\gradlew.bat test
+
+
+
